@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<title>Video Optimizer</title>
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/fe-jw/fe-jw.github.io/img/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fe-jw/fe-jw.github.io/css/font.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div class="wrap">
+	<header class="header">
+		<h1 class="main_tit">Video <br data-break-1>Optimizer</h1>
+	</header>
+	<section class="section_1">
+		<div class="container">
+			<h2 class="sub_tit">Video 1</h2>
+			<video muted autoplay loop playsinline>
+				<source src="#" data-src="https://cdn.jsdelivr.net/gh/fe-jw/vdOptimizer/assets/vdo_1.mp4" type="video/mp4">
+			</video>
+		</div>
+	</section>
+	<section class="section_2">
+		<div class="container">
+			<h2 class="sub_tit">Video 2</h2>
+			<video muted autoplay loop playsinline>
+				<source src="#" data-src="https://cdn.jsdelivr.net/gh/fe-jw/vdOptimizer/assets/vdo_2.mp4" type="video/mp4">
+			</video>
+		</div>
+	</section>
+	<section class="section_3">
+		<div class="container">
+			<h2 class="sub_tit">Video 3</h2>
+			<video muted autoplay loop playsinline>
+				<source src="#" data-src="https://cdn.jsdelivr.net/gh/fe-jw/vdOptimizer/assets/vdo_3.mp4" type="video/mp4">
+			</video>
+		</div>
+	</section>
+	<section class="section_4">
+		<div class="container">
+			<h2 class="sub_tit">Video 4</h2>
+			<video muted autoplay loop playsinline>
+				<source src="#" data-src="https://cdn.jsdelivr.net/gh/fe-jw/vdOptimizer/assets/vdo_4.mp4" type="video/mp4">
+			</video>
+		</div>
+	</section>
+	<section class="section_5">
+		<div class="container">
+			<h2 class="sub_tit">Video 5</h2>
+			<video muted autoplay loop playsinline>
+				<source src="#" data-src="https://cdn.jsdelivr.net/gh/fe-jw/vdOptimizer/assets/vdo_5.mp4" type="video/mp4">
+			</video>
+		</div>
+	</section>
+	<section class="section_6">
+		<div class="container">
+			<h2 class="sub_tit">Video 6</h2>
+			<video muted autoplay loop playsinline>
+				<source src="#" data-src="https://cdn.jsdelivr.net/gh/fe-jw/vdOptimizer/assets/vdo_6.mp4" type="video/mp4">
+			</video>
+		</div>
+	</section>
+	<section class="section_7">
+		<div class="container">
+			<h2 class="sub_tit">Video 7</h2>
+			<video muted autoplay loop playsinline>
+				<source src="#" data-src="https://cdn.jsdelivr.net/gh/fe-jw/vdOptimizer/assets/vdo_7.mp4" type="video/mp4">
+			</video>
+		</div>
+	</section>
+	<section class="section_8">
+		<div class="container">
+			<h2 class="sub_tit">Video 8</h2>
+			<video muted autoplay loop playsinline>
+				<source src="#" data-src="https://cdn.jsdelivr.net/gh/fe-jw/vdOptimizer/assets/vdo_8.mp4" type="video/mp4">
+			</video>
+		</div>
+	</section>
+	<section class="section_9">
+		<div class="container">
+			<h2 class="sub_tit">Video 9</h2>
+			<video muted autoplay loop playsinline>
+				<source src="#" data-src="https://cdn.jsdelivr.net/gh/fe-jw/vdOptimizer/assets/vdo_9.mp4" type="video/mp4">
+			</video>
+		</div>
+	</section>
+	<section class="section_10">
+		<div class="container">
+			<h2 class="sub_tit">Video 10</h2>
+			<video muted autoplay loop playsinline>
+				<source src="#" data-src="https://cdn.jsdelivr.net/gh/fe-jw/vdOptimizer/assets/vdo_10.mp4" type="video/mp4">
+			</video>
+		</div>
+	</section>
+</div>
+<!-- <script src="js/highlight-8.7.min.js"></script> -->
+<script>
+// hljs.initHighlightingOnLoad();
+
+window.addEventListener('load', function(){
+	var videos = document.querySelectorAll('video source[data-src]');
+
+	var onInit = function(){
+		videos.forEach(function(e){
+			var $vdo = e.parentElement;
+			var $vdo_top = window.scrollY + $vdo.getBoundingClientRect().top - window.innerHeight / 3;
+			var trigger_point = window.scrollY + window.innerHeight;
+
+			//Lazyload
+			if(e.dataset.src && trigger_point >= $vdo_top){
+				e.src = e.dataset.src;
+				delete e.dataset.src;
+	
+				$vdo.load();
+			}
+
+			//Pause or Play
+			if(window.scrollY > window.scrollY + $vdo.getBoundingClientRect().top + $vdo.offsetHeight){
+				$vdo.pause();
+			}else if($vdo.paused && !e.dataset.src){
+				$vdo.play();
+			}
+		});
+	};
+
+	onInit();
+
+	window.addEventListener('scroll', onInit);
+});
+</script>
+</body>
+</html>
