@@ -97,38 +97,12 @@
 	</section>
 </div>
 <!-- <script src="js/highlight-8.7.min.js"></script> -->
+<script src="Ver1/vdOptimizer.js"></script>
 <script>
 // hljs.initHighlightingOnLoad();
 
 window.addEventListener('load', function(){
-	var videos = document.querySelectorAll('video source[data-src]');
-
-	var onInit = function(){
-		videos.forEach(function(e){
-			var $vdo = e.parentElement;
-			var $vdo_top = window.scrollY + $vdo.getBoundingClientRect().top - window.innerHeight / 3;
-			var trigger_point = window.scrollY + window.innerHeight;
-
-			//Lazyload
-			if(e.dataset.src && trigger_point >= $vdo_top){
-				e.src = e.dataset.src;
-				delete e.dataset.src;
-	
-				$vdo.load();
-			}
-
-			//Pause or Play
-			if(window.scrollY > window.scrollY + $vdo.getBoundingClientRect().top + $vdo.offsetHeight){
-				$vdo.pause();
-			}else if($vdo.paused && !e.dataset.src){
-				$vdo.play();
-			}
-		});
-	};
-
-	onInit();
-
-	window.addEventListener('scroll', onInit);
+	vdOptimizer();
 });
 </script>
 </body>
