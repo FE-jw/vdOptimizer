@@ -12,7 +12,7 @@ function vdOptimizer(){
 	
 	var vdo_source = document.querySelectorAll('video source[data-src]');
 	var onInit = function(){
-		vdo_source.forEach(function(e){
+		vdo_source.forEach(function(e, idx){
 			var $vdo = e.parentElement;
 			var vdo_top = window.scrollY + $vdo.getBoundingClientRect().top - window.innerHeight / 3;
 			var trigger_point = window.scrollY + window.innerHeight;

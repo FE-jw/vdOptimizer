@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="format-detection" content="telephone=no">
 <title>Video Optimizer</title>
-<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/fe-jw/fe-jw.github.io/img/favicon.ico">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/fe-jw/vdOptimizer/assets/favicon.ico">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fe-jw/fe-jw.github.io/css/font.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-<div class="wrap">
+<div class="vo-wrap">
 	<header class="header">
-		<h1 class="main_tit">Video <br data-break-1>Optimizer</h1>
+		<h1 class="main_tit"></h1>
 	</header>
 	<section class="info_wrap">
 		<h2 class="info_tit">Video Status</h2>
@@ -170,11 +170,41 @@
 			</video>
 		</div>
 	</section>
+	<footer class="footer">
+		<address class="copyright">&copy; JW</address>
+	</footer>
 </div>
 <!-- <script src="js/highlight-8.7.min.js"></script> -->
 <script src="Ver1/vdOptimizer.js"></script>
 <script>
 // hljs.initHighlightingOnLoad();
+
+var mainTit = [
+	'V',
+	'Vi',
+	'Vid',
+	'Vide',
+	'Video',
+	'Video <br data-break-1>O',
+	'Video <br data-break-1>Op',
+	'Video <br data-break-1>Opt',
+	'Video <br data-break-1>Opti',
+	'Video <br data-break-1>Optim',
+	'Video <br data-break-1>Optimi',
+	'Video <br data-break-1>Optimiz',
+	'Video <br data-break-1>Optimize',
+	'Video <br data-break-1>Optimizer'
+];
+
+var counting = 0;
+var clearAni = setInterval(function(){
+	document.querySelector('.main_tit').innerHTML = mainTit[counting];
+	counting++;
+
+	if(counting >= mainTit.length){
+		clearInterval(clearAni);
+	}
+}, 150);
 
 window.addEventListener('load', function(){
 	vdOptimizer();
